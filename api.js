@@ -10,7 +10,7 @@ export const SetToken = (newToken) =>{
 
 export const getFetchApi = () => {
     return fetch("https://wedev-api.sky.pro/api/v2/sayfiddinov-aliakbar/comments", { 
-      method: "GET"
+      method: "GET",
    })
       .then(response => response.json())
       .then(response => {
