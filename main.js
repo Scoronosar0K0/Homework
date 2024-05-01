@@ -7,11 +7,7 @@ const UserName = document.getElementById('add-form-name')
 const likeButtons = document.querySelectorAll('.like-button')
 const LoginLink = document.getElementById('login-link')
 
-const currentDate = new Date()
-export const dateString = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()} `
-
 let Users = []
-
 export const SetUsers = (newUser) => {
     Users = newUser
 }

@@ -1,23 +1,18 @@
 import { likes } from './likes.js'
-import {
-    ListElement,
-    UserComment,
-    appElement,
-    SetUsers,
-    Users,
-    preLoaderText,
-} from './main.js'
+import { ListElement, UserComment, Users, preLoaderText } from './main.js'
 import { initReplayClickListener } from './replay.js'
 import { loginFetch, token, getFetchApi } from './api.js'
 import { format } from 'date-fns'
-
+debugger
 export const renderComments = () => {
     const UsersHTML = Users.map((item, index) => {
         return `
-      <li class="comment" data-username="${item.author}" data-text="${item.text}">
+      <li class="comment" data-username="${item.author}" data-text="${
+            item.text
+        }">
         <div class="comment-header">
           <div>${item.author}</div>
-          <div>${format(Date(item.date), 'dd/MM/yyyy hh:mm')}</div>
+          <div>${format(item.date, 'dd/MM/yyyy hh:mm')}</div>
         </div>
         <div class="comment-body">
           <div class="comment-text">
@@ -27,7 +22,9 @@ export const renderComments = () => {
         <div class="comment-footer">
           <div class="likes">
             <span class="likes-counter">${item.likes}</span>
-            <button data-index='${index}' class="like-button ${item.paint}"></button>
+            <button data-index='${index}' class="like-button ${
+            item.paint
+        }"></button>
           </div>
         </div>
       </li>
@@ -81,7 +78,7 @@ export const renderComments = () => {
                     UserComment.placeholder = 'Пожалуйста заполните это поле'
                 } else if (UserComment.value.length < 3) {
                     alert(
-                        'используйте в комментариях и в имени более двух символов',
+                        'используйте в комментариях и в имени более двух символов'
                     )
                 } else {
                     preLoaderText.textContent = 'Комментарий публикуется...'
@@ -100,13 +97,13 @@ export const renderComments = () => {
                                     .replaceAll('<', '&lt')
                                     .replaceAll('>', '&gt'),
                             }),
-                        },
+                        }
                     ).then(() =>
                         fetch(
                             'https://wedev-api.sky.pro/api/v2/sayfiddinov-aliakbar/comments',
                             {
                                 method: 'GET',
-                            },
+                            }
                         )
                             .then((response) => {
                                 if (response.status === 400) {
@@ -131,7 +128,7 @@ export const renderComments = () => {
                                 if (error === '400') {
                                     preLoaderText.textContent = ''
                                     alert(
-                                        'Имя и комментарий должны быть длиннее 3 символов',
+                                        'Имя и комментарий должны быть длиннее 3 символов'
                                     )
                                 }
 
@@ -142,7 +139,7 @@ export const renderComments = () => {
                                     ButtonElement.disabled = false
                                     console.warn(error)
                                 }
-                            }),
+                            })
                     )
                 }
             })
