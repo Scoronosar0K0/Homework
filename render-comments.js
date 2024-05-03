@@ -1,9 +1,16 @@
 import { likes } from './likes.js'
-import { ListElement, UserComment, Users, preLoaderText } from './main.js'
+import {
+    ListElement,
+    UserComment,
+    appElement,
+    SetUsers,
+    Users,
+    preLoaderText,
+} from './main.js'
 import { initReplayClickListener } from './replay.js'
 import { loginFetch, token, getFetchApi } from './api.js'
 import { format } from 'date-fns'
-debugger
+
 export const renderComments = () => {
     const UsersHTML = Users.map((item, index) => {
         return `

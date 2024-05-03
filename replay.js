@@ -2,7 +2,7 @@ export const initReplayClickListener = (
     UserComment,
     Users,
     ListElement,
-    rerender
+    rerender,
 ) => {
     const commentsToAnswer = document.querySelectorAll('.comment')
 

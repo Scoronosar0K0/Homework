@@ -1,10 +1,10 @@
 const userUrl = 'https://wedev-api.sky.pro/api/user/login'
 import {
+    dateString,
     Users,
     SetUsers,
     preLoaderText,
     ListElement,
-    appElement,
 } from './main.js'
 import { renderComments } from './render-comments.js'
 
@@ -38,6 +38,7 @@ export const getFetchApi = () => {
             setTimeout(() => {
                 preLoaderText.textContent = ''
                 preLoaderText.classList.remove('margin')
+                renderComments(ListElement, Users)
             }, 900)
         })
 }
